@@ -14,7 +14,7 @@ fun main() {
 
 fun incorrectBehavior(): EitherNel<String, Unit> = either {
     zipOrAccumulate(
-        { validateList().bind() },
+        { validateList().bind() }, // this bind is dispatched to `Raise` of not `zipOrAccumulate` but `either`
         { validateList().bind() },
     ) { _, _ -> }
 }
